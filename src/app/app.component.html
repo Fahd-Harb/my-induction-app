@@ -5,9 +5,52 @@
   </h1>
 </div>
 <div>
-  <form [formGroup]='basicForm'>
-    Please Enter you name:
-    <app-custom-input [label]="'Name:'" [isRequired]="true" formControlName="name"></app-custom-input>
-    <input type="checkbox" /> Interested in Angular?
-  </form>
+  <div>
+    <form [formGroup]='basicForm'>
+      Please Enter you name:
+      <app-custom-input [label]="'Name:'" [isRequired]="true" formControlName="name"></app-custom-input>
+      <input type="checkbox" /> Interested in Angular?
+    </form>
+  </div>
+</div>
+<div>
+  <h2>Custom Attribute Directives</h2>
+
+  <h4 myColorChanger [myColor]="titleColor"> myColorChanger Directive Demo</h4>
+
+  <div myCustomTheme> myCustomTheme Directive Demo with Default Settings</div>
+
+  <div myCustomTheme tcolor="blue" tsize="30px"> myCustomTheme Directive Demo with Custom Settings</div>
+
+  <div>
+    <select [(ngModel)]="myColor">
+      <option value='' selected disabled> Select Color </option>
+      <option *ngFor="let color of colors" [value]="color">
+        {{color}}
+      </option>
+    </select>
+    <p myDynamicColorChanger [dynamicColOnEvent]="myColor" defaultValue="blue"> myDynamicColorChanger Directive Demo</p>
+  </div>
+
+  <h3>myIf Directive</h3>
+  <div>
+    <input type="radio" name="rad1" (click)="changeCondition(true)"> True
+    <input type="radio" name="rad1" (click)="changeCondition(false)"> False
+  </div>
+  <br/>
+  <div *myIf="showMyIf">
+    <b>Hello World!</b>
+  </div>
+  <ng-template [myIf]="!showMyIf">
+    <div>
+      <b>Not Available</b>
+    </div>
+  </ng-template>
+
+  <h3>myCustomLoop Directive</h3>
+  <ul>
+    <li *myCustomLoop="3">
+      Namaste
+    </li>
+  </ul>
 </div>

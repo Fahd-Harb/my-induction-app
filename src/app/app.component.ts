@@ -8,9 +8,20 @@ import { formGroupNameProvider } from '@angular/forms/src/directives/reactive_di
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'My Welcom App';
+
+  txtsize = '25px';
+  colors = ['CYAN', 'GREEN', 'RED'];
+  myColor = '';
+  titleColor= 'green';
+
+  showMyIf = false;
 
   basicForm = new FormGroup({
     name: new FormControl()
   });
+
+  changeCondition(flag) {
+     this.showMyIf = flag;
+  }
 }
